@@ -22,3 +22,8 @@ body {
 .login-form-button {
   width: 100%;
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}

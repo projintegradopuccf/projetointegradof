@@ -70,7 +70,7 @@ export default class Login extends Component {
             </Button>
             Or <a href="">register now!</a>
           </Form.Item>
-          <p>{this.state.errMsg}</p>
+          <p className="error-message">{this.state.errMsg}</p>
         </Form>
       </div>
     );
