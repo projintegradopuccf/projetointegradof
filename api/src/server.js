@@ -2,8 +2,8 @@ const db = require("./db");
 const express = require("express");
 const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
-const testeController = require("./controllers/test");
 const authController = require("./controllers/auth");
+const productsController = require("./controllers/products");
 
 // Inicializa express (framework para gerenciar requisicoes http da aplicaçao)
 const app = express();
@@ -20,11 +20,11 @@ db.connect((err, client) => {
       return next();
     });
 
-    // Cria rota GET no path "/" e inicializa controller de teste
-    app.get("/", testeController.testeController);
-
+    // Cria rota POST no path "/signup" e inicializa controller de signup
     app.post("/signup", authController.signup);
     app.post("/signin", authController.signin);
+
+    app.get("/products", productsController.findAll);
 
     console.log("Database connected!");
   }
