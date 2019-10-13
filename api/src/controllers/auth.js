@@ -9,9 +9,9 @@ module.exports = {
 
     if (!user) {
       res.status(404).json({ message: "Incorret user or password" });
+    } else {
+      res.status(200).json(user);
     }
-
-    res.status(200).json(user);
   },
 
   async signup(req, res) {

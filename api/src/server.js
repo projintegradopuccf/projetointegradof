@@ -1,5 +1,6 @@
 const db = require("./db");
 const express = require("express");
+const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
 const testeController = require("./controllers/test");
 const authController = require("./controllers/auth");
@@ -7,6 +8,7 @@ const authController = require("./controllers/auth");
 // Inicializa express (framework para gerenciar requisicoes http da aplicaçao)
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Inicia a instancia do mongo
 db.connect((err, client) => {
