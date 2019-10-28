@@ -5,7 +5,7 @@ import { Form, Icon, Input, Button, Row, Col } from "antd";
 import "./styles.css";
 import { api } from "../../utils/api";
 import img from '../../assets/Vector.png'
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,7 @@ export default class Login extends Component {
         </Row>
         <Row type="flex" justify="center">
           <Col span={6} style={{ textAlign: 'center' }}>
-            <h1 style={{fontSize:'60px'}}>LOGIN</h1>
+            <h1 style={{fontSize:'60px'}}>REGISTRO</h1>
           </Col>
         </Row>
         <Row type="flex" justify="center">
