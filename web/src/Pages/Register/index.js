@@ -5,7 +5,7 @@ import { Form, Icon, Input, Button, Row, Col } from "antd";
 import "./styles.css";
 import { api } from "../../utils/api";
 import img from '../../assets/Vector.png'
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +15,6 @@ export default class Login extends Component {
       errMsg: ""
     };
   }
-
   handleSubmit = async e => {
     e.preventDefault();
     this.setState({
@@ -28,7 +27,6 @@ export default class Login extends Component {
         isLoading: false,
         errMsg: ""
       });
-      this.props.history.push("/dashboard/products");
     } catch (error) {
       console.log(error.response);
       this.setState({
@@ -48,7 +46,7 @@ export default class Login extends Component {
         </Row>
         <Row type="flex" justify="center">
           <Col span={6} style={{ textAlign: 'center' }}>
-            <h1 style={{fontSize:'60px'}}>LOGIN</h1>
+            <h1 style={{fontSize:'60px'}}>REGISTRO</h1>
           </Col>
         </Row>
         <Row type="flex" justify="center">
@@ -92,12 +90,3 @@ export default class Login extends Component {
     );
   }
 }
-
-Login.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }),
-  to: PropTypes.string.isRequired
-};
-
-export default withRouter(Login);
