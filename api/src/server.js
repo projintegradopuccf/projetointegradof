@@ -4,6 +4,7 @@ const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
 const authController = require("./controllers/auth");
 const productsController = require("./controllers/products");
+const customersController = require("./controllers/customers");
 
 // Inicializa express (framework para gerenciar requisicoes http da aplicaçao)
 const app = express();
@@ -24,6 +25,7 @@ db.connect((err, client) => {
     app.post("/signup", authController.signup);
     app.post("/signin", authController.signin);
 
+    app.get("/customers", customersController.findAll);
     app.get("/products", productsController.findAll);
 
     console.log("Database connected!");

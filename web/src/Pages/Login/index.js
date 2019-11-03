@@ -4,8 +4,11 @@ import axios from "axios";
 import { Form, Icon, Input, Button, Row, Col } from "antd";
 import "./styles.css";
 import { api } from "../../utils/api";
-import img from '../../assets/Vector.png'
-export default class Login extends Component {
+import img from "../../assets/Vector.png";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,13 +45,13 @@ export default class Login extends Component {
     return (
       <>
         <Row type="flex" justify="center">
-          <Col span={24} style={{ textAlign: 'center',padding:20 }}>
+          <Col span={24} style={{ textAlign: "center", padding: 20 }}>
             <img src={img} />
           </Col>
         </Row>
         <Row type="flex" justify="center">
-          <Col span={6} style={{ textAlign: 'center' }}>
-            <h1 style={{fontSize:'60px'}}>LOGIN</h1>
+          <Col span={6} style={{ textAlign: "center" }}>
+            <h1 style={{ fontSize: "60px" }}>LOGIN</h1>
           </Col>
         </Row>
         <Row type="flex" justify="center">
@@ -56,7 +59,9 @@ export default class Login extends Component {
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
                 <Input
-                  prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+                  prefix={
+                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                  }
                   placeholder="Username"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
@@ -64,7 +69,9 @@ export default class Login extends Component {
               </Form.Item>
               <Form.Item>
                 <Input
-                  prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+                  prefix={
+                    <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                  }
                   type="password"
                   placeholder="Password"
                   value={this.state.password}
@@ -74,14 +81,14 @@ export default class Login extends Component {
               <Form.Item>
                 <a className="login-form-forgot" href="">
                   Forgot password
-            </a>
+                </a>
                 <Button
                   type="primary"
                   htmlType="submit"
                   className="login-form-button"
                 >
                   Log in
-            </Button>
+                </Button>
                 Or <a href="">register now!</a>
               </Form.Item>
               <p className="error-message">{this.state.errMsg}</p>

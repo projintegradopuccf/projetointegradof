@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Icon } from "antd";
-
+import { Link } from "react-router-dom";
 export default function NavigationMenu() {
   return (
     <div
@@ -12,8 +12,10 @@ export default function NavigationMenu() {
     >
       <Menu mode="inline" theme="dark" inlineCollapsed={false}>
         <Menu.Item key="1">
-          <Icon type="pie-chart" />
-          <span>Customers</span>
+          <Link to="/dashboard/customers">
+            <Icon type="pie-chart" />
+            <span>Customers</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="2">
           <Icon type="pie-chart" />
@@ -36,8 +38,10 @@ export default function NavigationMenu() {
           <span>Reviews</span>
         </Menu.Item>
         <Menu.Item key="7">
-          <Icon type="pie-chart" />
-          <span>Products</span>
+          <Link to="/dashboard/products">
+            <Icon type="pie-chart" />
+            <span>Products</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="8">
           <Icon type="pie-chart" />

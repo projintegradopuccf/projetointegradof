@@ -8,27 +8,27 @@ import { api } from "../../utils/api";
 const columns = [
   {
     title: "ID",
-    dataIndex: "product_id",
-    key: "product_id"
+    dataIndex: "customer_id",
+    key: "customer_id"
   },
   {
-    title: "Categoria",
-    dataIndex: "product_category_name",
-    key: "product_category_name "
+    title: "Zipcode prefix",
+    dataIndex: "customer_zip_code_prefix",
+    key: "customer_zip_code_prefix "
   },
   {
-    title: "Name Length",
-    dataIndex: "product_name_lenght",
-    key: "product_name_lenght"
+    title: "City",
+    dataIndex: "customer_city",
+    key: "customer_city"
   },
   {
-    title: "Weight",
-    dataIndex: "product_weight_g",
-    key: "product_weight_g"
+    title: "State",
+    dataIndex: "customer_state",
+    key: "customer_state"
   }
 ];
 
-export default class Products extends Component {
+export default class Customers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +38,8 @@ export default class Products extends Component {
   }
 
   async componentDidMount() {
-    await axios.get(api.path + "/products?limit=100").then(res => {
+    await axios.get(api.path + "/customers?limit=100").then(res => {
+      console.log(`res`, res);
       this.setState({
         isLoading: false,
         data: res.data
@@ -63,7 +64,7 @@ export default class Products extends Component {
             }}
           >
             <Col span={20}>
-              <h1>Products</h1>
+              <h1>Customers Data</h1>
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (
