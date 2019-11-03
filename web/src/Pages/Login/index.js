@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import { Container } from './styles';
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import "./styles.css";
 import { api } from "../../utils/api";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +16,7 @@ export default class Login extends Component {
       errMsg: ""
     };
   }
+
   handleSubmit = async e => {
     e.preventDefault();
     this.setState({
@@ -27,6 +29,7 @@ export default class Login extends Component {
         isLoading: false,
         errMsg: ""
       });
+      this.props.history.push("/dashboard/products");
     } catch (error) {
       console.log(error.response);
       this.setState({
@@ -38,7 +41,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-login">
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
             <Input
@@ -58,9 +61,7 @@ export default class Login extends Component {
             />
           </Form.Item>
           <Form.Item>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
+            <a className="login-form-forgot">Forgot password</a>
             <Button
               type="primary"
               htmlType="submit"
@@ -68,7 +69,7 @@ export default class Login extends Component {
             >
               Log in
             </Button>
-            Or <a href="">register now!</a>
+            Or <a>register now!</a>
           </Form.Item>
           <p className="error-message">{this.state.errMsg}</p>
         </Form>
@@ -76,3 +77,12 @@ export default class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }),
+  to: PropTypes.string.isRequired
+};
+
+export default withRouter(Login);

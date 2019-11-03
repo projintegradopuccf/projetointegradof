@@ -1,6 +1,5 @@
 import React from "react";
-import { Menu, Icon, Button } from "antd";
-const { SubMenu } = Menu;
+import { Menu, Icon } from "antd";
 
 export default function NavigationMenu() {
   return (
