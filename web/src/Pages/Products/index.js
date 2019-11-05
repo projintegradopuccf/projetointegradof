@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Col, Row, Table } from "antd";
 import axios from "axios";
+import { FaUsers, FaBoxes, FaMoneyBillWave } from "react-icons/fa";
+
 import Menu from "../../Components/Menu";
 import "./styles.css";
 import { api } from "../../utils/api";
@@ -59,18 +61,22 @@ export default class Products extends Component {
             style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: 20
             }}
           >
             <Col span={20}>
-              <h1>Products</h1>
+              <h1 className="title"> <FaBoxes style={{
+                fontSize: '30px',
+                marginRight: '10px'
+              }} />Products</h1>
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (
                 <p>Carregando...</p>
               ) : (
-                <Table dataSource={this.state.data} columns={columns} />
-              )}
+                  <Table dataSource={this.state.data} columns={columns} style={{
+                    background: '#e6e6e6',
+                  }} />
+                )}
             </Col>
           </Row>
         </Col>

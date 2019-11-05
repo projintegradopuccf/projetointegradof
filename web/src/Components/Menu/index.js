@@ -27,49 +27,59 @@ export default function NavigationMenu() {
           </Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <MdLocationOn style={{
-            fontSize: '24px',
-            position: 'relative',
-            top: '7px',
-            marginRight: '7px'
-          }} />
-          <span>Geolocation</span>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <GoListUnordered style={{
-            fontSize: '24px',
-            position: 'relative',
-            top: '7px',
-            marginRight: '7px'
-          }} />
-          <span>Order items</span>
-        </Menu.Item>
-        <Menu.Item key="4">
-          <MdReorder style={{
-            fontSize: '24px',
-            position: 'relative',
-            top: '7px',
-            marginRight: '7px'
-          }} />
-          <span>Orders</span>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <MdPayment style={{
+          <Link to="/dashboard/geolocation">
+            <MdLocationOn style={{
               fontSize: '24px',
               position: 'relative',
               top: '7px',
               marginRight: '7px'
             }} />
-          <span>Payments</span>
+            <span>Geolocation</span>
+          </Link>
         </Menu.Item>
-        <Menu.Item key="6">
-          <MdSpeakerNotes style={{
+        <Menu.Item key="3">
+          <Link to="/dashboard/order-itens">
+            <GoListUnordered style={{
               fontSize: '24px',
               position: 'relative',
               top: '7px',
               marginRight: '7px'
-            }}/>
-          <span>Reviews</span>
+            }} />
+            <span>Order items</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="4">
+          <Link to="/dashboard/customers">
+            <MdReorder style={{
+              fontSize: '24px',
+              position: 'relative',
+              top: '7px',
+              marginRight: '7px'
+            }} />
+            <span>Orders</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <Link to="/dashboard/customers">
+            <MdPayment style={{
+              fontSize: '24px',
+              position: 'relative',
+              top: '7px',
+              marginRight: '7px'
+            }} />
+            <span>Payments</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="6">
+          <Link to="/dashboard/customers">
+            <MdSpeakerNotes style={{
+              fontSize: '24px',
+              position: 'relative',
+              top: '7px',
+              marginRight: '7px'
+            }} />
+            <span>Reviews</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="7">
           <Link to="/dashboard/products">
@@ -83,13 +93,15 @@ export default function NavigationMenu() {
           </Link>
         </Menu.Item>
         <Menu.Item key="8">
-          <FaMoneyBillWave style={{
+          <Link to="/dashboard/customers">
+            <FaMoneyBillWave style={{
               fontSize: '24px',
               position: 'relative',
               top: '7px',
               marginRight: '7px'
             }} />
-          <span>Sellers</span>
+            <span>Sellers</span>
+          </Link>
         </Menu.Item>
       </Menu>
     </div>

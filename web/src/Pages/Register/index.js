@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 // import { Container } from './styles';
 import { Form, Icon, Input, Button, Row, Col } from "antd";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./styles.css";
 import { api } from "../../utils/api";
 import img from '../../assets/Vector.png'
-export default class Register extends Component {
+
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,11 +25,12 @@ export default class Register extends Component {
     });
     const { email, password } = this.state;
     try {
-      const res = await axios.post(api.path + "/signin", { email, password });
+      const res = await axios.post(api.path + "/signup", { email, password });
       this.setState({
         isLoading: false,
         errMsg: ""
       });
+      this.props.history.push("/dashboard/products");
     } catch (error) {
       console.log(error.response);
       this.setState({
@@ -90,3 +94,12 @@ export default class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }),
+  to: PropTypes.string.isRequired
+};
+
+export default withRouter(Register);

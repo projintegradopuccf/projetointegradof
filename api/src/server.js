@@ -5,6 +5,12 @@ const MongoClient = require("mongodb").MongoClient;
 const authController = require("./controllers/auth");
 const productsController = require("./controllers/products");
 const customersController = require("./controllers/customers");
+const geolocationController = require("./controllers/geolocation");
+const orderItensController = require("./controllers/order-itens");
+const ordersController = require("./controllers/orders");
+const paymentsController = require("./controllers/payment");
+const reviewsController = require("./controllers/reviews");
+const sellersController = require("./controllers/sellers");
 
 // Inicializa express (framework para gerenciar requisicoes http da aplicaçao)
 const app = express();
@@ -26,7 +32,13 @@ db.connect((err, client) => {
     app.post("/signin", authController.signin);
 
     app.get("/customers", customersController.findAll);
+    app.get("/geolocation", geolocationController.findAll);
+    app.get("/order-itens", orderItensController.findAll);
+    app.get("/orders", ordersController.findAll);
+    app.get("/payments", paymentsController.findAll);
+    app.get("/reviews", reviewsController.findAll);
     app.get("/products", productsController.findAll);
+    app.get("/sellers", sellersController.findAll);
 
     console.log("Database connected!");
   }

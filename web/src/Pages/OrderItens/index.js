@@ -10,27 +10,27 @@ import { api } from "../../utils/api";
 const columns = [
   {
     title: "ID",
-    dataIndex: "customer_id",
-    key: "customer_id"
+    dataIndex: "order_id",
+    key: "order_id"
   },
   {
-    title: "Zipcode prefix",
-    dataIndex: "customer_zip_code_prefix",
-    key: "customer_zip_code_prefix "
+    title: "Price",
+    dataIndex: "price",
+    key: "price"
   },
   {
-    title: "City",
-    dataIndex: "customer_city",
-    key: "customer_city"
+    title: "Freight Value",
+    dataIndex: "freight_value",
+    key: "freight_value"
   },
   {
-    title: "State",
-    dataIndex: "customer_state",
-    key: "customer_state"
+    title: "Shipping limit date",
+    dataIndex: "shipping_limit_date",
+    key: "shipping_limit_date"
   }
 ];
 
-export default class Customers extends Component {
+export default class OrderItens extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +40,7 @@ export default class Customers extends Component {
   }
 
   async componentDidMount() {
-    await axios.get(api.path + "/customers?limit=100").then(res => {
+    await axios.get(api.path + "/order-itens?limit=100").then(res => {
       console.log(`res`, res);
       this.setState({
         isLoading: false,
@@ -66,19 +66,19 @@ export default class Customers extends Component {
             }}
           >
             <Col span={20}>
-            <h1 className="title"> <FaUsers style={{
+              <h1 className="title"> <FaUsers style={{
                 fontSize: '30px',
                 marginRight: '10px'
-              }} />Customers</h1>
+              }} />Order Itens</h1>
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (
                 <p>Carregando...</p>
               ) : (
-                <Table dataSource={this.state.data} columns={columns} style={{
-                  background: '#e6e6e6',
-                }} />
-              )}
+                  <Table dataSource={this.state.data} columns={columns} style={{
+                    background: '#e6e6e6',
+                  }} />
+                )}
             </Col>
           </Row>
         </Col>
