@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Table } from "antd";
 import axios from "axios";
-import { GoListUnordered } from "react-icons/go";
+import { MdLocationOn } from "react-icons/md";
 
 import Menu from "../../Components/Menu";
 import "./styles.css";
@@ -10,27 +10,39 @@ import { api } from "../../utils/api";
 const columns = [
   {
     title: "ID",
-    dataIndex: "order_id",
-    key: "order_id"
+    dataIndex: "_id",
+    key: "_id"
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price"
+    title: "Zip code prefix",
+    dataIndex: "geolocation_zip_code_prefix",
+    key: "geolocation_zip_code_prefix"
   },
   {
-    title: "Freight Value",
-    dataIndex: "freight_value",
-    key: "freight_value"
+    title: "Latitude",
+    dataIndex: "geolocation_lat",
+    key: "geolocation_lat"
   },
   {
-    title: "Shipping limit date",
-    dataIndex: "shipping_limit_date",
-    key: "shipping_limit_date"
+    title: "Longitude",
+    dataIndex: "geolocation_lng",
+    key: "geolocation_lng"
+  }
+  ,
+  {
+    title: "City",
+    dataIndex: "geolocation_city",
+    key: "geolocation_city"
+  }
+  ,
+  {
+    title: "State",
+    dataIndex: "geolocation_state",
+    key: "geolocation_state"
   }
 ];
 
-export default class OrderItens extends Component {
+export default class Geolocations extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +52,7 @@ export default class OrderItens extends Component {
   }
 
   async componentDidMount() {
-    await axios.get(api.path + "/order-itens?limit=100").then(res => {
+    await axios.get(api.path + "/geolocations?limit=100").then(res => {
       console.log(`res`, res);
       this.setState({
         isLoading: false,
@@ -66,10 +78,10 @@ export default class OrderItens extends Component {
             }}
           >
             <Col span={20}>
-              <h1 className="title"> <GoListUnordered style={{
+              <h1 className="title"> <MdLocationOn style={{
                 fontSize: '30px',
                 marginRight: '10px'
-              }} />Order Itens</h1>
+              }} />Geolocations</h1>
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (

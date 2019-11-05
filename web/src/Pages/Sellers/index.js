@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Table } from "antd";
 import axios from "axios";
-import { GoListUnordered } from "react-icons/go";
+import { FaUsers, FaBoxes, FaMoneyBillWave } from "react-icons/fa";
 
 import Menu from "../../Components/Menu";
 import "./styles.css";
@@ -9,28 +9,29 @@ import { api } from "../../utils/api";
 
 const columns = [
   {
-    title: "ID",
-    dataIndex: "order_id",
-    key: "order_id"
+    title: "Seller ID",
+    dataIndex: "seller_id",
+    key: "seller_id"
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price"
+    title: "Seller Zip code prefix",
+    dataIndex: "seller_zip_code_prefix",
+    key: "seller_zip_code_prefix"
   },
   {
-    title: "Freight Value",
-    dataIndex: "freight_value",
-    key: "freight_value"
-  },
+    title: "Seller City",
+    dataIndex: "seller_city",
+    key: "seller_city"
+  }
+  ,
   {
-    title: "Shipping limit date",
-    dataIndex: "shipping_limit_date",
-    key: "shipping_limit_date"
+    title: "Seller State",
+    dataIndex: "seller_state",
+    key: "seller_state"
   }
 ];
 
-export default class OrderItens extends Component {
+export default class Sellers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +41,7 @@ export default class OrderItens extends Component {
   }
 
   async componentDidMount() {
-    await axios.get(api.path + "/order-itens?limit=100").then(res => {
+    await axios.get(api.path + "/sellers?limit=100").then(res => {
       console.log(`res`, res);
       this.setState({
         isLoading: false,
@@ -66,10 +67,10 @@ export default class OrderItens extends Component {
             }}
           >
             <Col span={20}>
-              <h1 className="title"> <GoListUnordered style={{
+              <h1 className="title"> <FaMoneyBillWave style={{
                 fontSize: '30px',
                 marginRight: '10px'
-              }} />Order Itens</h1>
+              }} />Sellers</h1>
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (

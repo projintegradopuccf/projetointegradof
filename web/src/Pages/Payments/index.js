@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Table } from "antd";
 import axios from "axios";
-import { GoListUnordered } from "react-icons/go";
+import { MdPayment } from "react-icons/md";
 
 import Menu from "../../Components/Menu";
 import "./styles.css";
@@ -9,28 +9,28 @@ import { api } from "../../utils/api";
 
 const columns = [
   {
-    title: "ID",
+    title: "Order ID",
     dataIndex: "order_id",
     key: "order_id"
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price"
+    title: "Payment Type",
+    dataIndex: "payment_type",
+    key: "payment_type"
   },
   {
-    title: "Freight Value",
-    dataIndex: "freight_value",
-    key: "freight_value"
+    title: "Payment Installments",
+    dataIndex: "payment_installments",
+    key: "payment_installments"
   },
   {
-    title: "Shipping limit date",
-    dataIndex: "shipping_limit_date",
-    key: "shipping_limit_date"
+    title: "Payment Value",
+    dataIndex: "payment_value",
+    key: "payment_value"
   }
 ];
 
-export default class OrderItens extends Component {
+export default class Payments extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +40,7 @@ export default class OrderItens extends Component {
   }
 
   async componentDidMount() {
-    await axios.get(api.path + "/order-itens?limit=100").then(res => {
+    await axios.get(api.path + "/payments?limit=100").then(res => {
       console.log(`res`, res);
       this.setState({
         isLoading: false,
@@ -66,10 +66,10 @@ export default class OrderItens extends Component {
             }}
           >
             <Col span={20}>
-              <h1 className="title"> <GoListUnordered style={{
+              <h1 className="title"> <MdPayment style={{
                 fontSize: '30px',
                 marginRight: '10px'
-              }} />Order Itens</h1>
+              }} />Payments</h1>
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (

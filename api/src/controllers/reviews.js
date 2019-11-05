@@ -4,7 +4,7 @@ module.exports = {
 
     const cursor = await req.mongoClient
       .db("projf")
-      .collection("olist_reviews_dataset")
+      .collection("olist_order_reviews_dataset")
       .find({})
       .limit(!limit ? 100 : Number(limit))
       .skip(!skip ? 0 : Number(skip))

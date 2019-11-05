@@ -49,7 +49,7 @@ export default function NavigationMenu() {
           </Link>
         </Menu.Item>
         <Menu.Item key="4">
-          <Link to="/dashboard/customers">
+          <Link to="/dashboard/orders">
             <MdReorder style={{
               fontSize: '24px',
               position: 'relative',
@@ -60,7 +60,7 @@ export default function NavigationMenu() {
           </Link>
         </Menu.Item>
         <Menu.Item key="5">
-          <Link to="/dashboard/customers">
+          <Link to="/dashboard/payments">
             <MdPayment style={{
               fontSize: '24px',
               position: 'relative',
@@ -71,7 +71,7 @@ export default function NavigationMenu() {
           </Link>
         </Menu.Item>
         <Menu.Item key="6">
-          <Link to="/dashboard/customers">
+          <Link to="/dashboard/reviews">
             <MdSpeakerNotes style={{
               fontSize: '24px',
               position: 'relative',
@@ -93,7 +93,7 @@ export default function NavigationMenu() {
           </Link>
         </Menu.Item>
         <Menu.Item key="8">
-          <Link to="/dashboard/customers">
+          <Link to="/dashboard/sellers">
             <FaMoneyBillWave style={{
               fontSize: '24px',
               position: 'relative',

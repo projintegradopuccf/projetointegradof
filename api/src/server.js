@@ -32,7 +32,7 @@ db.connect((err, client) => {
     app.post("/signin", authController.signin);
 
     app.get("/customers", customersController.findAll);
-    app.get("/geolocation", geolocationController.findAll);
+    app.get("/geolocations", geolocationController.findAll);
     app.get("/order-itens", orderItensController.findAll);
     app.get("/orders", ordersController.findAll);
     app.get("/payments", paymentsController.findAll);
