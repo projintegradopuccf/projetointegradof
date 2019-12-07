@@ -6,6 +6,8 @@ import { FaUsers, FaBoxes, FaMoneyBillWave } from "react-icons/fa";
 import Menu from "../../Components/Menu";
 import "./styles.css";
 import { api } from "../../utils/api";
+import MongoChart from '../../Components/MongoChart'
+import { chartsUrl } from '../../utils/charts';
 
 const columns = [
   {
@@ -71,6 +73,14 @@ export default class Sellers extends Component {
                 fontSize: '30px',
                 marginRight: '10px'
               }} />Sellers</h1>
+            </Col>
+            <Col span={20}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: 20
+              }}>
+              <MongoChart url={chartsUrl.sellersCities} />
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (

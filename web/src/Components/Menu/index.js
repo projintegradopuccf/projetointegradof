@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FaUsers, FaBoxes, FaMoneyBillWave } from "react-icons/fa";
 import { MdLocationOn, MdReorder, MdPayment, MdSpeakerNotes } from 'react-icons/md'
 import { GoListUnordered } from 'react-icons/go'
+import img from "../../assets/Vector.png";
+import './styles.css';
 
 export default function NavigationMenu() {
   return (
@@ -14,6 +16,11 @@ export default function NavigationMenu() {
         minHeight: "2000px"
       }}
     >
+      <img src={img} className={"logo-menu"}/>
+      <hr style={{
+        width: '85%',
+        border: '1px solid #818bec',
+      }}/>
       <Menu mode="inline" theme="dark" inlineCollapsed={false}>
         <Menu.Item key="1">
           <Link to="/dashboard/customers">

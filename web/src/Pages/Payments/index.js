@@ -7,6 +7,9 @@ import Menu from "../../Components/Menu";
 import "./styles.css";
 import { api } from "../../utils/api";
 
+import MongoChart from '../../Components/MongoChart'
+import {chartsUrl} from '../../utils/charts';
+
 const columns = [
   {
     title: "Order ID",
@@ -71,6 +74,14 @@ export default class Payments extends Component {
                 marginRight: '10px'
               }} />Payments</h1>
             </Col>
+            <Col span={20}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: 20
+              }}>
+                <MongoChart url={chartsUrl.paymentTypes}/>
+                </Col>
             <Col span={20}>
               {this.state.isLoading ? (
                 <p>Carregando...</p>
