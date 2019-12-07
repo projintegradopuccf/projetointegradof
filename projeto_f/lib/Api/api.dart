@@ -53,7 +53,7 @@ Future <bool> login(String usuario, String senha) async{
 
   var data = {"email": usuario, "password": senha};
   final response=
-      await http.post('http://10.0.2.2:3333/singin/', body: data);
+      await http.post('https://api-projintegradof.herokuapp.com/signin', body: data);
 
   print(response);
   if(response.statusCode==200){// If the call to the server was successful, parse the JSON.
