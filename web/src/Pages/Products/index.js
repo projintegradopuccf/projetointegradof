@@ -6,6 +6,8 @@ import { FaUsers, FaBoxes, FaMoneyBillWave } from "react-icons/fa";
 import Menu from "../../Components/Menu";
 import "./styles.css";
 import { api } from "../../utils/api";
+import MongoChart from '../../Components/MongoChart'
+import { chartsUrl } from '../../utils/charts';
 
 const columns = [
   {
@@ -68,6 +70,14 @@ export default class Products extends Component {
                 fontSize: '30px',
                 marginRight: '10px'
               }} />Products</h1>
+            </Col>
+            <Col span={20}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: 20
+              }}>
+              <MongoChart url={chartsUrl.productsCategoryCount} />
             </Col>
             <Col span={20}>
               {this.state.isLoading ? (

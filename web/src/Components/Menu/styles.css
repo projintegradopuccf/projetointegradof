@@ -4,3 +4,10 @@ a svg.icon-nav {
     top: 7px;
     margin-right: 7px;
 }
+
+.logo-menu{
+    height: 80%;
+    width: 80%;
+    /* height: 100%; */
+    padding: 25px;
+}

@@ -4,6 +4,8 @@ import axios from "axios";
 import { MdSpeakerNotes } from "react-icons/md";
 
 import Menu from "../../Components/Menu";
+import MongoChart from '../../Components/MongoChart'
+import {chartsUrl} from '../../utils/charts';
 import "./styles.css";
 import { api } from "../../utils/api";
 
@@ -55,39 +57,50 @@ export default class Reviews extends Component {
   }
   render() {
     return (
-      <Row>
-        <Col span={4}>
-          <Menu />
-        </Col>
-        <Col span={20}>
-          <Row
-            type="flex"
-            justify="center"
-            align="middle"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: 20
-            }}
-          >
-            <Col span={20}>
-              <h1 className="title"> <MdSpeakerNotes style={{
-                fontSize: '30px',
-                marginRight: '10px'
-              }} />Reviews</h1>
-            </Col>
-            <Col span={20}>
-              {this.state.isLoading ? (
-                <p>Carregando...</p>
-              ) : (
-                  <Table dataSource={this.state.data} columns={columns} style={{
-                    background: '#e6e6e6',
-                  }} />
-                )}
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      <>
+        <Row>
+          <Col span={4}>
+            <Menu />
+          </Col>
+          <Col span={20}>
+            <Row
+              type="flex"
+              justify="center"
+              align="middle"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 20
+              }}
+            >
+              <Col span={20}>
+                <h1 className="title"> <MdSpeakerNotes style={{
+                  fontSize: '30px',
+                  marginRight: '10px'
+                }} />Reviews</h1>
+              </Col>
+              <Col span={20}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: 20
+              }}>
+                <MongoChart url={chartsUrl.reviewsScore}/>
+                </Col>
+              <Col span={20}>
+                {this.state.isLoading ? (
+                  <p>Carregando...</p>
+                ) : (
+                    <Table dataSource={this.state.data} columns={columns} style={{
+                      background: '#e6e6e6',
+                    }} />
+                  )}
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+      </>
     );
   }
 }
