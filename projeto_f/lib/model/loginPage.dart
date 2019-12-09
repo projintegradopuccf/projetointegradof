@@ -171,7 +171,7 @@ class LoginPageState extends State<LoginPage> {
                     
                     if(res){
                       
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FirstPage(name: 'Avaliação' ,url: 'https://charts.mongodb.com/charts-project-0-hipsp/embed/charts?id=f5c52d5a-740c-44b3-beba-5e5ad58e67a5&tenant=b9dcfd98-f9d0-4e1b-bd61-1684e4d51234',)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FirstPage(name: 'Avaliação' ,url: 'https://charts.mongodb.com/charts-project-0-hipsp/embed/charts?id=f5c52d5a-740c-44b3-beba-5e5ad58e67a5&tenant=b9dcfd98-f9d0-4e1b-bd61-1684e4d51234',index: 2, label: "Comentários",)));
                     }
                     
                     else{
@@ -208,11 +208,14 @@ class LoginPageState extends State<LoginPage> {
 
                     formFields.currentState.fields['email'].currentState.setValue(formFields.currentState.fields['email'].currentState.value.toString().trim());
                     formFields.currentState.fields['password'].currentState.setValue(formFields.currentState.fields['password'].currentState.value.toString().trim());
-                    var res = await login(formFields.currentState.fields['email'].currentState.value, formFields.currentState.fields['password'].currentState.value);
+                    formFields.currentState.fields['name'].currentState.setValue(formFields.currentState.fields['name'].currentState.value.toString().trim());
+                    formFields.currentState.fields['cpf'].currentState.setValue(formFields.currentState.fields['cpf'].currentState.value.toString().trim());
+
+                    var res = await singup(formFields.currentState.fields['email'].currentState.value, formFields.currentState.fields['password'].currentState.value);
                     
                     if(res){
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FirstPage(name: 'Avaliação' ,url: 'https://charts.mongodb.com/charts-project-0-hipsp/embed/charts?id=f5c52d5a-740c-44b3-beba-5e5ad58e67a5&tenant=b9dcfd98-f9d0-4e1b-bd61-1684e4d51234',)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FirstPage(name: 'Avaliação' ,url: 'https://charts.mongodb.com/charts-project-0-hipsp/embed/charts?id=f5c52d5a-740c-44b3-beba-5e5ad58e67a5&tenant=b9dcfd98-f9d0-4e1b-bd61-1684e4d51234', index: 2, label: "Comentários",)));
                     }
                     
                     else{
