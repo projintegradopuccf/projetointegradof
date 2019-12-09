@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 // import { Container } from './styles';
-import { Form, Icon, Input, Button, Row, Col } from "antd";
+import { Form, Icon, Input, Button, Row, Col, Spin } from "antd";
 import "./styles.css";
 import { api } from "../../utils/api";
 import img from "../../assets/Vector.png";
@@ -31,6 +31,8 @@ class Login extends Component {
         isLoading: false,
         errMsg: ""
       });
+      localStorage.removeItem('user');
+      localStorage.setItem('user',JSON.stringify({email,password}));
       this.props.history.push("/dashboard/products");
     } catch (error) {
       console.log(error.response);
@@ -42,6 +44,7 @@ class Login extends Component {
   };
 
   render() {
+    const {isLoading} = this.state;
     return (
       <>
         <Row type="flex" justify="center">
@@ -87,9 +90,13 @@ class Login extends Component {
                   htmlType="submit"
                   className="login-form-button"
                 >
-                  Log in
+                  {!isLoading ? `Log in` : (
+                    <div>
+                    <Spin size="default"/>
+                    </div>
+                  )}
                 </Button>
-                Or <a href="">register now!</a>
+                Or <a onClick={() => this.props.history.push("/registro")}>register now!</a>
               </Form.Item>
               <p className="error-message">{this.state.errMsg}</p>
             </Form>

@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import { FaUsers, FaBoxes, FaMoneyBillWave } from "react-icons/fa";
 import { MdLocationOn, MdReorder, MdPayment, MdSpeakerNotes } from 'react-icons/md'
 import { GoListUnordered } from 'react-icons/go'
+import { FiLogOut } from 'react-icons/fi';
+import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom';
 import img from "../../assets/Vector.png";
 import './styles.css';
 
-export default function NavigationMenu() {
+export function NavigationMenu(props) {
+  const user = JSON.parse(localStorage.getItem('user'));
   return (
     <div
       style={{
@@ -16,11 +20,32 @@ export default function NavigationMenu() {
         minHeight: "2000px"
       }}
     >
-      <img src={img} className={"logo-menu"}/>
+      <img src={img} className={"logo-menu"} />
+      <span style={{
+        color: '#818bec',
+        fontWeight: 'bold',
+        marginLeft: '25px',
+      }}>Usuário: {user.email}</span>
+      <a style={{
+        color: '#818bec',
+        fontWeight: 'bold',
+        marginLeft: '25px',
+      }}
+        onClick={() => {
+          props.history.push("/login");
+          localStorage.removeItem('user');
+        }}>
+        <FiLogOut
+          style={{
+            fontSize: '24px',
+            position: 'relative',
+            top: '7px',
+            marginRight: '7px'
+          }} />Sair </a>
       <hr style={{
         width: '85%',
         border: '1px solid #818bec',
-      }}/>
+      }} />
       <Menu mode="inline" theme="dark" inlineCollapsed={false}>
         <Menu.Item key="1">
           <Link to="/dashboard/customers">
@@ -114,3 +139,12 @@ export default function NavigationMenu() {
     </div>
   );
 }
+
+Menu.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }),
+  to: PropTypes.string.isRequired
+};
+
+export default withRouter(NavigationMenu);

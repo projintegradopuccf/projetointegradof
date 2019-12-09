@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 // import { Container } from './styles';
-import { Form, Icon, Input, Button, Row, Col } from "antd";
+import { Form, Icon, Input, Button, Row, Col,Spin } from "antd";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles.css";
@@ -30,6 +30,8 @@ class Register extends Component {
         isLoading: false,
         errMsg: ""
       });
+      localStorage.removeItem('user');
+      localStorage.setItem('user',JSON.stringify({email,password}));
       this.props.history.push("/dashboard/products");
     } catch (error) {
       console.log(error.response);
@@ -41,6 +43,7 @@ class Register extends Component {
   };
 
   render() {
+    const {isLoading} = this.state;
     return (
       <>
         <Row type="flex" justify="center">
@@ -82,7 +85,11 @@ class Register extends Component {
                   htmlType="submit"
                   className="login-form-button"
                 >
-                  Log in
+                   {!isLoading ? `Log in` : (
+                    <div>
+                    <Spin size="default"/>
+                    </div>
+                  )}
             </Button>
                 Or <a href="">register now!</a>
               </Form.Item>
